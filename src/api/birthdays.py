@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.database.db import get_db
 from src.schemas import ContactResponse
-from src.services.birthday import BirthdayService
+from src.services.birthdays import BirthdayService
 
 router = APIRouter(prefix="/birthday", tags=["birthday"])
 
