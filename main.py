@@ -1,8 +1,8 @@
 from fastapi import FastAPI
+from src.api import utils, contacts, birthdays
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the Contacts API"}
+app.include_router(utils.router, prefix="/api")
+app.include_router(contacts.router, prefix="/api")
+app.include_router(birthdays.router, prefix="/api")
