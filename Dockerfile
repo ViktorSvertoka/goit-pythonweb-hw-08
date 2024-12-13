@@ -1,5 +1,5 @@
 # Вибираємо базовий образ
-FROM python:3.10-slim
+FROM python:3.13-slim
 
 # Встановлюємо необхідні системні пакети для Poetry та компіляції залежностей
 RUN apt-get update && apt-get install -y gcc curl
