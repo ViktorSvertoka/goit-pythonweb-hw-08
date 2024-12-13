@@ -14,6 +14,7 @@ sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
 pydantic = "^2.10.3"
 pydantic-extra-types = "^2.10.1"
 phonenumbers = "^8.13.52"
+email-validator = "^2.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
