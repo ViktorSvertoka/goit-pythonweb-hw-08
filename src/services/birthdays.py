@@ -1,5 +1,5 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from src.repository.birthday import BirthdayRepository
+from src.repository.birthdays import BirthdayRepository
 from src.schemas import ContactModel
 
 
