@@ -8,7 +8,7 @@ class Base(DeclarativeBase):
     pass
 
 
-class Note(Base):
+class Contact(Base):
     __tablename__ = "contacts"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False)
     name: Mapped[str] = mapped_column(String(50), nullable=False)
