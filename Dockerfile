@@ -23,4 +23,4 @@ RUN poetry install --no-interaction --no-dev
 EXPOSE 8000
 
 # Запускаємо сервер
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python3", "main.py"]

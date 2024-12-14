@@ -12,12 +12,12 @@ class ContactRepository:
         self.db = session
 
     async def get_contacts(
-        self, first_name: str, last_name: str, email: str, skip: int, limit: int
+        self, name: str, surname: str, email: str, skip: int, limit: int
     ) -> List[Contact]:
         stmt = (
             select(Contact)
-            .where(Contact.first_name.contains(first_name))
-            .where(Contact.last_name.contains(last_name))
+            .where(Contact.name.contains(name))
+            .where(Contact.surname.contains(surname))
             .where(Contact.email.contains(email))
             .offset(skip)
             .limit(limit)
@@ -55,9 +55,9 @@ class ContactRepository:
             await self.db.commit()
         return contact
 
-    async def is_contact_exists(self, email: str, phone_number: str) -> bool:
+    async def is_contact_exists(self, email: str, phone: str) -> bool:
         query = select(Contact).where(
-            (Contact.email == email) | (Contact.phone_number == phone_number)
+            (Contact.email == email) | (Contact.phone == phone)
         )
         result = await self.db.execute(query)
         return result.scalars().first() is not None
@@ -70,21 +70,21 @@ class ContactRepository:
             select(Contact)
             .where(
                 or_(
-                    func.date_part("day", Contact.birth_date).between(
+                    func.date_part("day", Contact.birthday).between(
                         func.date_part("day", today), func.date_part("day", end_date)
                     ),
                     and_(
                         func.date_part("day", end_date) < func.date_part("day", today),
                         or_(
-                            func.date_part("day", Contact.birth_date)
+                            func.date_part("day", Contact.birthday)
                             >= func.date_part("day", today),
-                            func.date_part("day", Contact.birth_date)
+                            func.date_part("day", Contact.birthday)
                             <= func.date_part("day", end_date),
                         ),
                     ),
                 )
             )
-            .order_by(func.date_part("day", Contact.birth_date).asc())
+            .order_by(func.date_part("day", Contact.birthday).asc())
         )
 
         result = await self.db.execute(query)

@@ -19,17 +19,15 @@ async def get_upcoming_birthdays(
 
 @router.get("/", response_model=List[ContactResponse])
 async def get_contacts(
-    first_name: str = "",
-    last_name: str = "",
+    name: str = "",
+    surname: str = "",
     email: str = "",
     skip: int = 0,
     limit: int = 100,
     db: AsyncSession = Depends(get_db),
 ):
     contact_service = ContactService(db)
-    contacts = await contact_service.get_contacts(
-        first_name, last_name, email, skip, limit
-    )
+    contacts = await contact_service.get_contacts(name, surname, email, skip, limit)
     return contacts
 
 
