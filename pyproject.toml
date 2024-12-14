@@ -15,6 +15,8 @@ pydantic = "^2.10.3"
 pydantic-extra-types = "^2.10.1"
 phonenumbers = "^8.13.52"
 email-validator = "^2.2.0"
+alembic = "^1.14.0"
+uvicorn = "^0.32.1"
 
 
 [tool.poetry.group.dev.dependencies]
