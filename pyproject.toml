@@ -1,27 +1,18 @@
 [tool.poetry]
 name = "goit-pythonweb-hw-08"
 version = "0.1.0"
-description = "contacts_app"
-authors = ["Viktor Svertoka <victor.svertoka@gmail.com>"]
+description = ""
+authors = ["ViktorSvertoka <115661003+ViktorSvertoka@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
-psycopg2-binary = "^2.9.10"
-fastapi = "^0.115.6"
+fastapi = {version = "^0.115.5", extras = ["standard"]}
 asyncpg = "^0.30.0"
-sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
-pydantic = "^2.10.3"
-pydantic-extra-types = "^2.10.1"
-phonenumbers = "^8.13.52"
-email-validator = "^2.2.0"
+sqlalchemy = "^2.0"
 alembic = "^1.14.0"
-uvicorn = "^0.32.1"
+greenlet = "^3.1.1"
 
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.4"
-pytest-asyncio = "^0.25.0"
 
 [build-system]
 requires = ["poetry-core"]

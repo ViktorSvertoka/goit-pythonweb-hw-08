@@ -1,5 +1,4 @@
 import contextlib
-
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import (
     AsyncEngine,
@@ -26,7 +25,7 @@ class DatabaseSessionManager:
             yield session
         except SQLAlchemyError as e:
             await session.rollback()
-            raise e
+            raise  # Re-raise the original error
         finally:
             await session.close()
 

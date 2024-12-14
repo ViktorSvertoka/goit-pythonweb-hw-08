@@ -18,7 +18,7 @@ async def healthchecker(db: AsyncSession = Depends(get_db)):
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="Database is not configured correctly",
             )
-        return {"message": "Service is operated correctly"}
+        return {"message": "Welcome to FastAPI!"}
     except Exception as e:
         print(e)
         raise HTTPException(

@@ -1,17 +1,18 @@
-from datetime import date
-from sqlalchemy import Integer, String, Column
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.sql.sqltypes import Date
+from sqlalchemy import Integer, String, DateTime, Date, Column, func
+from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
 
 class Contact(Base):
     __tablename__ = "contacts"
-    id = Column(Integer, primary_key=True, nullable=False)
-    name = Column(String(50), nullable=False)
-    surname = Column(String(50), nullable=False)
-    email = Column(String(50))
-    phone = Column(String(50))
-    birthday = Column(Date, nullable=False)
-    notes = Column(String(300), nullable=True)
+
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(50), nullable=False)
+    last_name = Column(String(50), nullable=False)
+    email = Column(String(100), nullable=False, unique=True)
+    phone_number = Column(String(20), nullable=False, unique=True)
+    birth_date = Column(Date, nullable=False)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    info = Column(String(500), nullable=True)
